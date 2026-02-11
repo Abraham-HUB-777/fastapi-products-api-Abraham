@@ -1,5 +1,5 @@
 from typing import List
-from .models import Product
+from app.models import Product
 
 
 class ProductService:

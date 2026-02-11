@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Query
 from typing import List
-from .models import Product
-from .service import ProductService
+from app.models import Product
+from app.service import ProductService
 
 app = FastAPI()
 service = ProductService()
