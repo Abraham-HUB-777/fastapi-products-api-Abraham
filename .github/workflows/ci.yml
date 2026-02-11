@@ -34,7 +34,7 @@ jobs:
       - name: Start FastAPI app
         run: |
           uvicorn app.main:app --host 127.0.0.1 --port 8000 &
-          sleep 5
+          sleep 10
 
       - name: Run end to end tests
         run: pytest tests/test_e2e.py
