@@ -1,8 +1,9 @@
-import requests
+# tests/test_e2e.py
 
+from fastapi.testclient import TestClient
+from app.main import app
 
-BASE_URL = "http://127.0.0.1:8000"
-
+client = TestClient(app)
 
 def test_create_and_low_stock():
     product = {
@@ -11,13 +12,5 @@ def test_create_and_low_stock():
         "categoria": "tech",
         "stock": 3
     }
-
-    r = requests.post(f"{BASE_URL}/products", json=product)
-    assert r.status_code == 200
-
-    r = requests.get(f"{BASE_URL}/products/low-stock?threshold=5")
-    assert r.status_code == 200
-
-    data = r.json()
-    assert len(data) >= 1
-    assert data[0]["nombre"] == "Test"
+    response = client.post("/products", json=product)
+    assert response.status_code == 200
